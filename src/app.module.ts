@@ -7,6 +7,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 // Importação dos módulos funcionais
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { CoursesModule } from './courses/courses.module';
+import { EnrollmentsModule } from './enrollments/enrollments.module';
+
 // Adicione outros módulos conforme necessário
 
 
@@ -31,9 +34,10 @@ import { AuthModule } from './auth/auth.module';
         synchronize: true, // Use 'false' em produção e utilize migrações
       }),
     }),
-    UsersModule, // Importa o módulo de usuários
-    AuthModule,  // Importa o módulo de autenticação
-    // Adicione outros módulos conforme necessário
+    UsersModule,       // Importa o módulo de usuários
+    AuthModule,        // Importa o módulo de autenticação
+    CoursesModule,     // Importa o módulo de cursos
+    EnrollmentsModule, // Importa o módulo de matrículas
   ],
   controllers: [],
   providers: [],

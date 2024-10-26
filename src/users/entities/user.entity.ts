@@ -1,6 +1,8 @@
 // src/users/entities/user.entity.ts
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Course } from '../../courses/entities/course.entity';
+import { Enrollment } from '../../enrollments/entities/enrollment.entity';
 import { Role } from '../../common/enums/role.enum';
 
 
@@ -22,9 +24,10 @@ export class User {
   })
   role: Role;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @OneToMany(() => Course, course => course.professor)
+  courses: Course[];
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @OneToMany(() => Enrollment, enrollment => enrollment.student)
+  enrollments: Enrollment[];
 }
+
